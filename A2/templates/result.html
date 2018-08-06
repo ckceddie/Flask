@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey Index - Result</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div id="frame">
+        <h1>Submitted Info </h1>
+        <ul>
+            <li class="sub">name: </li>
+            <li class="val">{{name}} </li>
+        </ul>
+        <ul>
+                <li class="sub">Location: </li>
+                <li class="val">{{location}} </li>
+        </ul>
+        <ul>
+                <li class="sub">my Favorite Language: </li>
+                <li class="val">{{mylanguage}} </li>
+        </ul>
+        <ul>
+                <li class="sub">Comment: </li>
+                <li class="val">{{mycomment}} </li>
+            </ul>
+    </div>
+</body>
+</html>
