@@ -1,0 +1,72 @@
+#==========[.py]=== /form_test/server.py===================================================
+
+
+from flask import Flask, render_template , request , redirect
+app=Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+@app.route('/users', methods=['POST'])
+def create_user():
+   name1 = request.form['name']
+   email1 = request.form['email']
+	 # Here's the line that changed. We're rendering a template from a post route now.
+   return render_template('success.html',name=name1 , email=email1)
+
+app.run(debug=True)
+
+
+#============= End of /form_test/server.py ===================================================
+
+
+#===[.html] ====/form_test/templates/index.html================================
+<html>
+    <head>
+       <title>Form Test Index</title>
+    </head>
+    <body>
+      <h1>Index Page</h1>
+      <h3>Create a User</h3>
+      <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+      <form action='/users' method='post'>
+          Name: <input type='text' name='name'>
+          Email: <input type='text' name='email'>
+          <input type='submit' value='create user'>
+      </form>
+    </body>
+</html>
+
+#========End of /form_test/templates/index.html================================
+
+
+
+#======[.html] ==== /form_test/templates/success.html================================
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Success</title>
+</head>
+<body>
+    <h1>Success page</h1>
+    {% if name == "eddie" %}
+    <h3 id="name"> Eddie name is {{name}}</h3>
+    {% elif name == "ken" %}
+    <h3 id="name"> ken name is {{name}}</h3>
+    {% else %}
+    <h3 id="name"> unknown name is {{name}}</h3>
+
+    {% endif %}
+    
+    <h3 id="email">email : {{email}}</h3>
+</body>
+</html>
+
+#======End of /form_test/templates/success.html================================
