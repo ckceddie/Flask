@@ -38,6 +38,12 @@
 
         </form>
         <p id="display">{{display}}</p>
+        <form action="/reset" name="reset" method="POST">
+            {% if (reset==1) %}
+                <input type="submit" value="reset   ">
+            {% endif %}
+        </form>
+      
     </div>
 </body>
 </html>
