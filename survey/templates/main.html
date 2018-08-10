@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey Index</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <style>
+
+            ul {
+                display: inline-block;
+                list-style: none;
+                padding: 0px;
+            }
+            div#frame{
+                width: 600px;
+                border: 1px solid red;
+                margin: 0 auto 0 auto;
+                padding: 10px;
+            }
+            li.sub{
+                display: inline-block;
+                width: 150px;
+                vertical-align: top;
+            }
+            li.val{
+                display: inline-block;
+                width: 300px;
+            }
+            p{
+                text-align: right;
+                padding: 0 50px 0 0;
+            }
+            
+    </style>
+</head>
+<body>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages%} 
+          <li>{{message}}</li>
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+
+    <div id="frame">
+        <form action="/result" method="post">
+            <ul>
+                <li class="sub" >your name :</li>
+                <li class="val"><input  type="text" name="name"></li>
+            </ul>
+            <ul>
+                <li class="sub" >Your location :</li>
+                <li  class="val"> <select name="location" name="location">
+                        <option value=""></option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="San Francisco">San Francisco</option>
+                        <option value="San Metae">San Metae</option>
+                        <option value="Other">Other</option>
+                    </select></li>
+            </ul>
+            <ul>
+                    <li class="sub" >favorite language :</li>
+                    <li  class="val"> <select  name="mylanguage">
+                            <option value=""></option>
+                            <option value="html">html</option>
+                            <option value="CSS">CSS</option>
+                            <option value="Java script">Java Script</option>
+                            <option value="Other">Other</option>
+                        </select></li>
+                </ul>
+            <ul>
+                <li class="sub" >Comment (optional) :</li>
+                <li  class="val"><textarea name="mycomment"  rows="4" cols="50">Enter text here...</textarea></li>
+                
+            </ul>
+            <p>        <button type="submit">submit</button></p>
+           
+
+        </form>
+    </div>
+</body>
+</html>
