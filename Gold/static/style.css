@@ -1,0 +1,35 @@
+<style>
+
+        div{
+            margin-top: 20px;
+        }
+        .container{
+            width: 980px;
+            margin : 10pt auto 0pt auto
+        }
+        .place{
+            width: 180px;
+            text-align:center;
+            display: inline-block;
+            margin: 5px 0px;
+            border:1pt grey solid
+        }
+        .place ul{
+             list-style: none;
+             padding: 0px;
+        }
+        .place li{
+            margin-top: 10px;
+        }
+        div#activities{
+            border:1pt grey solid;
+            display: block;
+            width: 740px;
+        }
+        .win{
+            color:green;
+        }
+        .lost{
+            color:red;
+        }
+    </style>

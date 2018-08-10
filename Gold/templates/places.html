@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    
+</head>
+<body>
+    <div class="container">
+    <div> Your Gold : {{session['gold']}}</div>
+    <div>
+            <div class="place">
+                    <form action="/process_money" method="POST">
+                        <input type="hidden" name="place" value="farm">
+                        <ul>
+                            <li><h3>Farm</h3></li>
+                            <li>(earns 10-20 golds)</li>
+                            <li><input type="submit" value="Find Golds!">   </li>
+                        </ul>
+                    </form>
+                </div>
+            <div class="place">
+                <form action="/process_money" method="POST">
+                    <input type="hidden" name="place" value="cave">
+                    <ul>
+                        <li><h3>Cave</h3></li>
+                        <li>(earns 5-10 golds)</li>
+                        <li><input type="submit" value="Find Golds!">   </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="place">
+                <form action="/process_money" method="POST">
+                    <input type="hidden" name="place" value="house">
+                    <ul>
+                        <li><h3>House</h3></li>
+                        <li>(earns 2-5 golds)</li>
+                        <li><input type="submit" value="Find Golds!">   </li>
+                    </ul>
+                </form>
+            </div>
+            <div class="place">
+                <form action="/process_money" method="POST">
+                    <input type="hidden" name="place" value="casino">
+                    <ul>
+                        <li><h3>Casino</h3></li>
+                        <li>(earns/takes 0-50 golds)</li>
+                        <li><input type="submit" value="Find Golds!">   </li>
+                    </ul>
+                </form>
+            </div>
+        </form>
+    </div>
+    <div >
+        <div>Activities</div>
+        <div id="activities">
+            <ul>
+                <!-- for loop display activitie message -->
+                {% for a in session['act_message']:%}
+                        {% if (a.gamble==0) %}
+                            <li class="win">
+                                Earned {{a.gold}} from the {{a.place}}! ( {{a.date}} ) 
+                            </li> 
+                        {% else %}
+                        <li class="lost">
+                                Entered a casino and lost {{a.gold}} goldes... Ouch.. ( {{a.date}} )
+                        </li> 
+                        {% endif %}
+                {% endfor %}       
+            </ul>
+        </div>
+        <a href="/clear">Reset</a>
+    </div>
+
+
+
+</div>
+</body>
+</html>
